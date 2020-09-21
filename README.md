@@ -1,7 +1,7 @@
 - make sure to provide `NEWRELIC_LICENSE_KEY`
-- run using `sbt run`, note stdout output
+- run using `sbt run`
 - once up and running, `curl http://localhost:8000`
-- note stdout, it should report "transaction id" (in reality `getTransaction().hashCode()`) 4 times:
+- note stdout output, it should report "transaction id" (in reality `getTransaction().hashCode()`) 4 times:
   - before toStrictEntity handles the request
   - after toStrictEntity handles the request
   - before toStrictEntity handles the response
