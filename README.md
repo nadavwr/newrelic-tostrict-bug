@@ -1,0 +1,11 @@
+- make sure to provide `NEWRELIC_LICENSE_KEY`
+- run using `sbt run`, note stdout output
+- once up and running, `curl http://localhost:8000`
+- note stdout, it should report "transaction id" (in reality `getTransaction().hashCode()`) 4 times:
+  - before toStrictEntity handles the request
+  - after toStrictEntity handles the request
+  - before toStrictEntity handles the response
+  - after toStrictEntity handles the response
+- since akka-http 10.1.5 and above we lose transaction id immediately following `toStrictEntity` directive. Of the 4 checks above, only the first is aware of the transaction id.
+- tested against NewRelic agent 5.10 and 6.0.0
+- tested against Akka HTTP 10.1.4, 10.1.9, 10.1.11
